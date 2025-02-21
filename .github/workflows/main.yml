@@ -27,7 +27,7 @@ jobs:
       # run the application
       - name: Install next
         run: |
-              cd ./demo-crim-main
+              cd ./demo-crm-main
               sudo npm run dev
 
 

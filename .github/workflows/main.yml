@@ -22,19 +22,19 @@ jobs:
       
       # Install Runner updates
       - name: Install updates
-        run: apt-get update 
+        run: sudo apt-get update 
 
       # Run the appilcation demo_crm
       - name: Install yarn 
-        run: apt-get install -y yarn
+        run: sudo apt-get install -y yarn
         
       # Run application on Backround
       - name: Set working directory
-        run: yarn install --frozen-lockfile
+        run: sudo yarn install --frozen-lockfile
 
       # Run application on Backround
       - name: Set working directory
-        run: yarn build
+        run: sudo yarn build
                 
       # Check if application is up
       - name: Application check

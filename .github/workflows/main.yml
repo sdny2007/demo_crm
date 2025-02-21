@@ -28,9 +28,9 @@ jobs:
       - name: Install next
         run: |
               cd ./demo-crm-main
-              sudo npm run dev
+              nohup npm run dev &
 
 
       # Check if the application is up
       - name: Application check
-        run: curl http://localhost:3000
+        run: curl -i http://localhost:3000

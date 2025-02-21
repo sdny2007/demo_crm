@@ -26,19 +26,19 @@ jobs:
 
       # Run the appilcation demo_crm
       - name: Install yarn 
-        run: RUN apt-get install -y yarn
+        run: apt-get install -y yarn
         
       # Run application on Backround
       - name: Set working directory
-        run: mkdir /project/demo-crm/ | cd /project/demo-crm/
+        run: yarn install --frozen-lockfile
 
-              # Run application on Backround
+      # Run application on Backround
       - name: Set working directory
-        run: cp 
+        run: yarn build
                 
       # Check if application is up
       - name: Application check
-        run: curl http://localhost:5000
+        run: curl http://localhost:3000
 
   job2:
     name: CI - E2E  

@@ -36,10 +36,12 @@ jobs:
         run: cd ./demo-crm-main/
       # Run application on Backround
       - name: pwd
-        run: pwd       
+        run: pwd  
+      - name: ll
+        run: ls -l        
       # Run application on Backround
       - name: Set working directory
-        run: sudo yarn build ./demo-crm-main/
+        run: sudo yarn build 
                 
       # Check if application is up
       - name: Application check

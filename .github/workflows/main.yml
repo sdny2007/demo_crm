@@ -1,5 +1,5 @@
 name: Demo_CRM CI/CD
-#CI
+# CI
 # Controls when the workflow will run
 on:
   # Triggers the workflow on push or pull request events but only for the "main" branch
@@ -13,7 +13,6 @@ on:
 jobs:
   job1:
     name: CI - Unit Test
-    # This workflow contains a single job called "build"
     runs-on: ubuntu-latest
     
     steps:
@@ -24,23 +23,20 @@ jobs:
       - name: Install updates
         run: sudo apt-get update 
 
-      # Run the appilcation demo_crm
-      - name: Install yarn 
-        run: sudo apt-get install -y yarn
+      # Install Yarn (use the official Yarn setup action)
+      - name: Setup Yarn
+        uses: borales/actions-yarn@v2.0.0
+
+      # Install dependencies
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
         
-      # Run application on Backround
-      - name: Set working directory
-        run: sudo yarn install --frozen-lockfile
-        
+      # Change directory and build the application
       - name: Change directory and build
         run: |
-              cd ./demo-crm-main
-              sudo yarn build
-                
-      # Check if application is up
+          cd ./demo-crm-main
+          yarn build
+
+      # Check if the application is up
       - name: Application check
         run: curl http://localhost:3000
-
-                    
-        
-        

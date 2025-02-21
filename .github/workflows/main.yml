@@ -2,11 +2,8 @@ name: Demo_CRM CI/CD
 # CI
 # Controls when the workflow will run
 on:
-  # Triggers the workflow on push or pull request events but only for the "main" branch
   pull_request:
     branches: [ "main" ]
-
-  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
 # CI
@@ -21,9 +18,9 @@ jobs:
       
       # Install Runner updates
       - name: Install updates
-        run: sudo apt-get update 
+        run: sudo apt-get update
 
-      # Install Yarn (use the official Yarn setup action)
+      # Install Yarn
       - name: Setup Yarn
         uses: borales/actions-yarn@v2.0.0
 
@@ -31,12 +28,17 @@ jobs:
       - name: Install dependencies
         run: sudo yarn install --frozen-lockfile
 
-        
       # Change directory and build the application
       - name: Change directory and build
         run: |
           cd ./demo-crm-main
           sudo yarn build
+
+      # Start the application in the background
+      - name: Start application
+        run: |
+          cd ./demo-crm-main
+          nohup sudo yarn dev &
 
       # Check if the application is up
       - name: Application check

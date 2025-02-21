@@ -31,7 +31,12 @@ jobs:
       # Run application on Backround
       - name: Set working directory
         run: sudo yarn install --frozen-lockfile
-
+      # Run application on Backround
+      - name: cd
+        run: cd ./demo-crm-main/
+      # Run application on Backround
+      - name: pwd
+        run: pwd       
       # Run application on Backround
       - name: Set working directory
         run: sudo yarn build ./demo-crm-main/

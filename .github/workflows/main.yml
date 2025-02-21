@@ -34,7 +34,7 @@ jobs:
         
       - name: Change directory and build
         run: |
-              cd demo_crm/demo-crm-main
+              cd ./demo-crm-main
               sudo yarn build
                 
       # Check if application is up

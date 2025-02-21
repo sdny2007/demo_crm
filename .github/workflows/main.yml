@@ -27,8 +27,8 @@ jobs:
       # Clean node_modules and yarn.lock to avoid issues with existing installs
       - name: Clean node_modules
         run: |
-          rm -rf node_modules
-          rm -f yarn.lock
+          sudo rm -rf node_modules
+          sudo  rm -f yarn.lock
 
       # Install dependencies
       - name: Install dependencies

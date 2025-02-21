@@ -22,7 +22,7 @@ jobs:
       
       # Install Runner updates
       - name: Install updates
-        run: apt-get update -y
+        run: apt-get update 
 
       # Run the appilcation demo_crm
       - name: Install yarn 

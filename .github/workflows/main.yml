@@ -29,7 +29,8 @@ jobs:
 
       # Install dependencies
       - name: Install dependencies
-        run: yarn install --frozen-lockfile
+        run: yarn install --frozen-lockfile --no-bin-links
+
         
       # Change directory and build the application
       - name: Change directory and build

@@ -34,7 +34,7 @@ jobs:
 
       # Run application on Backround
       - name: Set working directory
-        run: sudo yarn build
+        run: sudo yarn build ./demo-crm-main/
                 
       # Check if application is up
       - name: Application check

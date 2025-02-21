@@ -24,15 +24,27 @@ jobs:
       - name: Setup Yarn
         uses: borales/actions-yarn@v2.0.0
 
+      # Clean node_modules and yarn.lock to avoid issues with existing installs
+      - name: Clean node_modules
+        run: |
+          rm -rf node_modules
+          rm -f yarn.lock
+
       # Install dependencies
       - name: Install dependencies
         run: sudo yarn install --frozen-lockfile
+
+      # Verify Next.js installation
+      - name: Verify Next.js installation
+        run: |
+          cd ./demo-crm-main
+          yarn list next
 
       # Change directory and build the application
       - name: Change directory and build
         run: |
           cd ./demo-crm-main
-          yarn build
+          npx next build
 
       # Start the application in the background
       - name: Start application

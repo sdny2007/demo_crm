@@ -29,14 +29,14 @@ jobs:
 
       # Install dependencies
       - name: Install dependencies
-        run: yarn install --frozen-lockfile --no-bin-links
+        run: sudo yarn install --frozen-lockfile
 
         
       # Change directory and build the application
       - name: Change directory and build
         run: |
           cd ./demo-crm-main
-          yarn build
+          sudo yarn build
 
       # Check if the application is up
       - name: Application check

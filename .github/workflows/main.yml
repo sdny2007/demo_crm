@@ -50,7 +50,9 @@ jobs:
 
       # Run Docker Compose
       - name: Run docker compose file
-        run: docker compose up -d
+        run: |
+              cd ./demo-crm-main
+              docker compose up -d
         
       # Wait 15 seconds for the application to start
       - name: Wait 10 seconds

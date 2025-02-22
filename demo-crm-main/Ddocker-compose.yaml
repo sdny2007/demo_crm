@@ -1,0 +1,41 @@
+services:
+  app:
+    build: .
+    container_name: demo_crm
+    depends_on:
+      - mongo-db
+    networks:
+      - backend
+      - frontend
+
+  mongo-db:
+    image: mongodb/mongodb-community-server
+    container_name: mongo-db
+    environment:
+      - MONGODB_INITDB_ROOT_USERNAME=${MONGODB_USERNAME}    
+      -  MONGODB_INITDB_ROOT_PASSWORD=${MONGODB_PASSWORD}       
+    networks:
+      - backend
+    volumes:
+      - db-data:/data/db 
+  nginx: 
+    image: nginx:stable
+    container_name: nginx
+    ports: 
+      - "80:3000"  
+    depends_on:
+      - app 
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf      
+    networks:
+      - frontend       
+      
+networks:
+  demo_crm:
+    name: backend
+  nginx:
+    name: frontend  
+  
+
+volumes:
+  db-data:    

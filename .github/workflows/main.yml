@@ -67,13 +67,13 @@ jobs:
             "company": "Develeap",
             "website": "https://shaydan.com"
           }'  
-          - name: Check - show if the customer exists
-            run: |
-              response=$(curl -s http://localhost:80/api/clients | grep -i "Shay Danny")
-              if [[ -z "$response" ]]; then
-              echo "Customer 'Shay Danny' does not exist. Failing the job."
-              exit 1
-              else
-              echo "Customer 'Shay Danny' found. Continuing the job."
-              fi
-    
+
+      - name: Check - show if the customer exists
+        run: |
+          response=$(curl -s http://localhost:80/api/clients | grep -i "Shay Danny")
+          if [[ -z "$response" ]]; then
+            echo "Customer 'Shay Danny' does not exist. Failing the job."
+            exit 1
+          else
+            echo "Customer 'Shay Danny' found. Continuing the job."
+          fi

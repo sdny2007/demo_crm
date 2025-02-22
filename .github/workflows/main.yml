@@ -61,7 +61,7 @@ jobs:
       # Check if application, database and nginx is up
       - name: Check - add a new customer 
         run: |
-          curl -X POST http://demo_crm:80/api/clients -H "Content-Type: application/json" -d '{
+          curl -X POST http://localhost:80/api/clients -H "Content-Type: application/json" -d '{
             "name": "Shay Danny",
             "email": "shaydan@develeap.com",
             "company": "Develeap",
@@ -69,7 +69,7 @@ jobs:
           }'  
           - name: Check - show if the customer exists
             run: |
-              response=$(curl -s http://demo_crm:80/api/clients | grep -i "Shay Danny")
+              response=$(curl -s http://localhost:80/api/clients | grep -i "Shay Danny")
               if [[ -z "$response" ]]; then
               echo "Customer 'Shay Danny' does not exist. Failing the job."
               exit 1

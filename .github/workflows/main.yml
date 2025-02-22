@@ -59,20 +59,21 @@ jobs:
         run: sleep 10
         
       # Check if application, database and nginx is up
-      - name: Check
-        run: curl -XGET  -i http://localhost:80
-        
-      # Connect to ECR via access key
-      - name: Connect to ECR
-        uses: aws-actions/configure-aws-credentials@v4
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: ap-south-1
-      #  Push the app Image to ECR       
-      - name: Tag and Push Docker image
-        run: | 
-             aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 886436956602.dkr.ecr.ap-south-1.amazonaws.com
-             VERSION=$(date +%Y%m%d%H%M%S)-${GITHUB_SHA:0:7}
-             docker tag entrytracker-app:latest 886436956602.dkr.ecr.ap-south-1.amazonaws.com/entrytracker/app:$VERSION
-             docker push 886436956602.dkr.ecr.ap-south-1.amazonaws.com/entrytracker/app:$VERSION        
+      - name: Check - add a new customer 
+        run: |
+          curl -X POST http://localhost:80/api/clients -H "Content-Type: application/json" -d '{
+            "name": "Shay Danny",
+            "email": "shaydan@develeap.com",
+            "company": "Develeap",
+            "website": "https://shaydan.com"
+          }'  
+          - name: Check - show if the customer exists
+            run: |
+              response=$(curl -s http://localhost:80/api/clients | grep -i "Shay Danny")
+              if [[ -z "$response" ]]; then
+              echo "Customer 'Shay Danny' does not exist. Failing the job."
+              exit 1
+              else
+              echo "Customer 'Shay Danny' found. Continuing the job."
+              fi
+    

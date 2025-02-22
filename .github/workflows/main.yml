@@ -58,7 +58,7 @@ jobs:
         
       # Check if application, database and nginx is up
       - name: Check
-        run: curl -XGET http://localhost:80
+        run: curl -XGET  -i http://localhost:80
         
       # Connect to ECR via access key
       - name: Connect to ECR

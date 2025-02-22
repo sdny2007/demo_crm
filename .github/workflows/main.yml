@@ -43,10 +43,16 @@ jobs:
     env:
       MONGO_INITDB_ROOT_USERNAME: ${{ secrets.MONGODB_USERNAME }}
       MONGO_INITDB_ROOT_PASSWORD: ${{ secrets.MONGODB_PASSWORD }}
+     
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
+
+      - name: Set up MongoDB URI as environment variable
+        run: |
+         echo "MONGODB_URI=${{ secrets.MONGODB_URI }}" >> $GITHUB_ENV
+         echo "MY_VAR=some_value" >> $GITHUB_ENV       
 
       # Run Docker Compose
       - name: Run docker compose file

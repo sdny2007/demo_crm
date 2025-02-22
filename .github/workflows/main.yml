@@ -41,8 +41,8 @@ jobs:
     needs: job1
     # Set environment variables using secrets
     env:
-      MYSQL_DATABASE: ${{ secrets.MYSQL_DATABASE }}
-      MYSQL_ROOT_PASSWORD: ${{ secrets.MYSQL_ROOT_PASSWORD }}
+      MONGO_INITDB_ROOT_USERNAME: ${{ secrets.MONGODB_USERNAME }}
+      MONGO_INITDB_ROOT_PASSWORD: ${{ secrets.MONGODB_PASSWORD }}
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks out your repository under $GITHUB_WORKSPACE, so your job can access it

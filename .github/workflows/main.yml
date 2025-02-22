@@ -61,19 +61,27 @@ jobs:
       # Check if application, database and nginx is up
       - name: Check - add a new customer 
         run: |
-          curl -X POST http://localhost:80/api/clients -H "Content-Type: application/json" -d '{
+          response=$(curl -s -X POST http://localhost:80/api/clients -H "Content-Type: application/json" -d '{
             "name": "Shay Danny",
             "email": "shaydan@develeap.com",
             "company": "Develeap",
             "website": "https://shaydan.com"
-          }'  
+          }')
+          echo "Response from POST request: $response"
+          if [[ "$response" != *"success"* ]]; then
+            echo "Failed to add customer."
+            exit 1
+          fi
 
       - name: Check - show if the customer exists
         run: |
-          response=$(curl -s http://localhost:80/api/clients | grep -i "Shay Danny")
-          if [[ -z "$response" ]]; then
+          response=$(curl -s http://localhost:80/api/clients)
+          echo "Response from GET request: $response"
+          # Check for the customer name in the response (ensure correct structure)
+          if [[ "$response" == *"Shay Danny"* ]]; then
+            echo "Customer 'Shay Danny' found. Continuing the job."
+          else
             echo "Customer 'Shay Danny' does not exist. Failing the job."
             exit 1
-          else
-            echo "Customer 'Shay Danny' found. Continuing the job."
           fi
+

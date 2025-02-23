@@ -85,4 +85,14 @@ jobs:
             echo "Customer 'Shay Danny' does not exist. Failing the job."
             exit 1
           fi
-
+      # Connect to ECR via access key
+      - name: Connect to ECR
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ap-south-1
+      #  Push the app Image to ECR       
+      - name: Push Docker image
+        run: | 
+              aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 886436956602.dkr.ecr.us-east-1.amazonaws.com

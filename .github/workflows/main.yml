@@ -96,6 +96,6 @@ jobs:
       - name: Push Docker image
         run: | 
               aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 886436956602.dkr.ecr.ap-south-1.amazonaws.com
-              docker build -t demo_crm/app .
+              docker build -t demo_crm/app ./demo-crm-main
               docker tag demo_crm/app:latest 886436956602.dkr.ecr.ap-south-1.amazonaws.com/demo_crm/app:latest
               docker push 886436956602.dkr.ecr.ap-south-1.amazonaws.com/demo_crm/app:latest

@@ -1,11 +1,11 @@
 # Base image lightweight version of Node.js
 FROM node:18-alpine
 
-# Run update and install yarn
+# Run update and
 RUN apk update && apk add --no-cache yarn
 
-# Set the MongoDB URI environment variable
-ENV MONGODB_URI="mongodb://user:pass@mongo-db:27017/customers?authSource=admin"
+# Set environment to production (before installing dependencies)
+#ENV NODE_ENV production
 
 # Set working directory
 WORKDIR /project/demo-crm/
@@ -24,7 +24,3 @@ EXPOSE 3000
 
 # Run the development server
 CMD ["yarn", "run", "dev"]
-
-
-
-

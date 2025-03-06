@@ -169,11 +169,11 @@ jobs:
 
       - name: Deploy mongo-db
         run: |
-          helm install mongo-db -f ./k8s/mongodb/values.yaml bitnami/mongodb   --set auth.rootPassword="pass-use secret!!!"  
+          helm install mongo-db -f ./k8s/mongodb/values.yaml bitnami/mongodb   --set auth.rootPassword="${{ secrets.MONGODB_PASSWORD }}"
 
-   #   - name: set env to the application
-    #    run: |
-     #     kubectl set env deployment/demo-crm MONGODB_URI="mongodb://root:${{ secrets.MONGODB_PASSWORD }}@service-db:27017/customers?authSource=admin"             
+      - name: set env to the application
+        run: |
+          kubectl set env deployment/demo-crm MONGODB_URI="mongodb://root:${{ secrets.MONGODB_PASSWORD }}@service-db:27017/customers?authSource=admin"             
 
       - name: Deploy App
         run: |

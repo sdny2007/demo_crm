@@ -149,6 +149,10 @@ jobs:
            chmod +x ./k8s/services/change_host-ingress_file
            ./k8s/services/change_host-ingress_file
 
+      - name: Run ingress service script
+        run: |
+           kubectl apply -f ingress.yaml            
+
       - name: Deploy service application 
         run: |
           kubectl apply -f ./k8s/services/service-app.yaml

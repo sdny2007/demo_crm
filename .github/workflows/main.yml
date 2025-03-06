@@ -142,4 +142,21 @@ jobs:
       
       - name: Deploy ingress controler
         run: |
-          helm install my-ingress-nginx ingress-nginx/ingress-nginx             
+          helm install my-ingress-nginx ingress-nginx/ingress-nginx
+
+      - name: Deploy ingress service script
+        run: |
+          ./change_host-ingress_file
+
+      - name: Deploy service application 
+        run: |
+          kubectl apply -f ./k8s/services/service-app.yaml
+
+      - name: Deploy service DB
+        run: |
+          kubectl apply -f ./k8s/services/service-db.yaml           
+
+      - name: Deploy mongo-db
+        run: |
+          helm install mongo-db -f values.yaml bitnami/mongodb   --set auth.rootPassword="pass-use secret!!!"         
+          

@@ -5,7 +5,6 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(to right, #ff7e5f, #feb47b); /* Happy gradient */
 }
 
 .main {
@@ -15,17 +14,15 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: #fff; /* White text for better contrast */
 }
 
 .footer {
   width: 100%;
   height: 100px;
-  border-top: 1px solid #ffd700; /* Gold color for success */
+  border-top: 1px solid #eaeaea;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #fff8dc; /* Light golden background */
 }
 
 .footer img {
@@ -39,9 +36,8 @@
 }
 
 .title a {
-  color: #ff6f61; /* Warm pink for success */
+  color: #0070f3;
   text-decoration: none;
-  font-weight: bold;
 }
 
 .title a:hover,
@@ -54,7 +50,6 @@
   margin: 0;
   line-height: 1.15;
   font-size: 4rem;
-  color: #fff;
 }
 
 .title,
@@ -65,17 +60,15 @@
 .description {
   line-height: 1.5;
   font-size: 1.5rem;
-  color: #fff;
 }
 
 .code {
-  background: #ffeb3b; /* Bright yellow background */
+  background: #fafafa;
   border-radius: 5px;
   padding: 0.75rem;
   font-size: 1.1rem;
   font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
     Bitstream Vera Sans Mono, Courier New, monospace;
-  color: #333; /* Dark text for readability */
 }
 
 .grid {
@@ -94,17 +87,16 @@
   text-align: left;
   color: inherit;
   text-decoration: none;
-  border: 2px solid #ff6f61; /* Border color to match success theme */
+  border: 1px solid #eaeaea;
   border-radius: 10px;
   transition: color 0.15s ease, border-color 0.15s ease;
-  background-color: #fff;
 }
 
 .card:hover,
 .card:focus,
 .card:active {
-  color: #ff6f61;
-  border-color: #ff6f61;
+  color: #0070f3;
+  border-color: #0070f3;
 }
 
 .card h3 {

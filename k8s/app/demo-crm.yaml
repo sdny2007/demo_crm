@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demo-crm
+spec:
+  replicas: 2  # Adjust based on your needs
+  selector:
+    matchLabels:
+      app: demo-crm
+  template:
+    metadata:
+      labels:
+        app: demo-crm
+        network: service-app
+    spec:
+      imagePullSecrets:
+        - name: ecr-secret  # Used for pulling the image from Amazon ECR
+      containers:
+        - name: my-app
+          image: 886436956602.dkr.ecr.ap-south-1.amazonaws.com/demo_crm/app:latest
+          ports:
+            - containerPort: 3000  # Adjust based on your application
+          env:
+            - name: MONGODB_URI
+              value: "mongodb://root:pass@service-db:27017/customers?authSource=admin"
+

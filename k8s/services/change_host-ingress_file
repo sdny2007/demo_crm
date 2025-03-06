@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# Get the external IP address of the ingress service
+EXTERNAL_IP=$(kubectl get svc my-ingress-nginx-controller -o=jsonpath='{.status.loadBalancer.ingress[0].hostname}')
+
+# Check if we successfully got the IP
+if [ -z "$EXTERNAL_IP" ]; then
+  echo "Failed to get the external IP address."
+  exit 1
+fi
+
+# Update the ingress.yaml file with the external IP address
+sed -i "s|host: .*|host: $EXTERNAL_IP|" ingress.yaml
+
+# Print the updated host value
+echo "Updated ingress.yaml with external IP: $EXTERNAL_IP"
+

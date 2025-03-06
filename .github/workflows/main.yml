@@ -144,9 +144,9 @@ jobs:
         run: |
           helm install my-ingress-nginx ingress-nginx/ingress-nginx
 
-      - name: Deploy ingress service script
+      - name: Run ingress service script
         run: |
-          ./change_host-ingress_file
+          ./k8s/services/change_host-ingress_file
 
       - name: Deploy service application 
         run: |

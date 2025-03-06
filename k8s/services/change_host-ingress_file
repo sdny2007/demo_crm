@@ -10,7 +10,7 @@ if [ -z "$EXTERNAL_IP" ]; then
 fi
 
 # Update the ingress.yaml file with the external IP address
-sed -i "s|host: .*|host: $EXTERNAL_IP|" ingress.yaml
+sed -i "s|host: .*|host: $EXTERNAL_IP|" ./k8s/services/ingress.yaml
 
 # Print the updated host value
 echo "Updated ingress.yaml with external IP: $EXTERNAL_IP"

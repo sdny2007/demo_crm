@@ -153,6 +153,7 @@ jobs:
            kubectl get svc
            chmod +x ./k8s/services/change_host-ingress_file
            ./k8s/services/change_host-ingress_file
+           cat ./k8s/services/change_host-ingress_file           
 
       - name: Run ingress service script
         run: |

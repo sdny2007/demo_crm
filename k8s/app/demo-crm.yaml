@@ -20,7 +20,7 @@ spec:
           image: 886436956602.dkr.ecr.ap-south-1.amazonaws.com/demo_crm/app:latest
           ports:
             - containerPort: 3000  # Adjust based on your application
-          env:
-            - name: MONGODB_URI
-              value: "mongodb://root:pass@service-db:27017/customers?authSource=admin"
+      #    env:
+      #      - name: MONGODB_URI
+     #         value: "mongodb://root:pass@service-db:27017/customers?authSource=admin"
 

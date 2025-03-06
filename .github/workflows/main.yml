@@ -137,7 +137,7 @@ jobs:
       - name: copy the file to the helm repository
         run: |
           cd ./k8s
-          mv * /.cache/helm/repository/
+          mv * .cache/helm/repository/
       
       - name: Deploy ingress controler
         run: |

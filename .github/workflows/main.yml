@@ -99,3 +99,39 @@ jobs:
               docker build -t demo_crm/app ./demo-crm-main
               docker tag demo_crm/app:latest 886436956602.dkr.ecr.ap-south-1.amazonaws.com/demo_crm/app:latest
               docker push 886436956602.dkr.ecr.ap-south-1.amazonaws.com/demo_crm/app:latest
+
+# CD
+
+  job3:
+    name: CD - Deployment
+    runs-on: ubuntu-latest
+    
+    steps:
+      # Checks out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v4
+
+      # Install Runner updates
+      - name: Install updates
+        run: sudo apt-get update
+
+      - name: Install kubectl
+        run: |
+          curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+          chmod +x kubectl
+          sudo mv kubectl /usr/local/bin/
+
+      - name: Update kubeconfig
+        run: aws eks update-kubeconfig --region ap-south-1 --name shay-cluster
+
+      - name: Install Helm
+        run: |
+          curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash  
+          
+      - name: copy the file to the helm repository
+        run: |
+          cd ./k8s
+          mv * /.cache/helm/repository/
+      
+      - name: Deploy ingress controler
+        run: |
+          helm install my-ingress-nginx ingress-nginx/ingress-nginx             

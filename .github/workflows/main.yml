@@ -157,7 +157,11 @@ jobs:
         run: |
           kubectl apply -f ./k8s/services/service-db.yaml           
 
+      - name: Add nginx-ingress repository
+        run: |
+          helm repo add bitnami https://charts.bitnami.com/bitnami 
+
       - name: Deploy mongo-db
         run: |
-          helm install mongo-db -f values.yaml bitnami/mongodb   --set auth.rootPassword="pass-use secret!!!"         
+          helm install mongo-db -f ./k8s/services/mongodb/values.yaml bitnami/mongodb   --set auth.rootPassword="pass-use secret!!!"         
           

@@ -142,4 +142,4 @@ jobs:
       
       - name: Deploy ingress controler
         run: |
-          helm install my-ingress-nginx ./k8s/ingress-nginx             
+          helm install my-ingress-nginx ingress-nginx/ingress-nginx             

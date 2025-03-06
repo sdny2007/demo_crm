@@ -170,6 +170,7 @@ jobs:
       - name: Deploy mongo-db
         run: |
           helm install mongo-db -f ./k8s/mongodb/values.yaml bitnami/mongodb   --set auth.rootPassword="${{ secrets.MONGODB_PASSWORD }}"
+          kubectl get secret mongo-db-mongodb -o jsonpath="{.data.mongodb-root-password}" | base64 --decode
 
       - name: Deploy App
         run: |

@@ -143,17 +143,13 @@ jobs:
       - name: Deploy ingress controler
         run: |
           helm install my-ingress-nginx ingress-nginx/ingress-nginx
-
-      # Wait 10 seconds for the application to start
-      - name: Wait 10 seconds
-        run: sleep 10
         
       - name: Run ingress service script
         run: |
            kubectl get svc
            chmod +x ./k8s/services/change_host-ingress_file
            ./k8s/services/change_host-ingress_file
-           cat ./k8s/services/change_host-ingress_file           
+           cat ./k8s/services/ingress.yaml           
 
       - name: Run ingress service script
         run: |

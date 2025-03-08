@@ -18,6 +18,7 @@ spec:
       containers:
         - name: my-app
           image: 886436956602.dkr.ecr.ap-south-1.amazonaws.com/demo_crm/app:latest
+          imagePullPolicy: Always        
           ports:
             - containerPort: 3000  # Adjust based on your application
 

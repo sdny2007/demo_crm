@@ -3,7 +3,7 @@ Overview
 This project uses the demo-crm application, which allows users to add customer profiles and display them on a webpage.
 
 ⚠️ Important: Run Terraform Before the Workflow
-Before executing the workflow, ensure that you have deployed the infrastructure using Terraform (please use the folder Terraform to build the infractacture).
+Before running the workflow, make sure to deploy the infrastructure using Terraform. Use the "Terraform_EKS" folder to set up the environment.
 
 Workflow Process
 Job 1 - CI Process

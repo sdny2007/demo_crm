@@ -7,6 +7,7 @@ Before running the workflow, make sure to deploy the infrastructure using Terraf
 
 RUN Terraform:
 aws configure (Access key)
+terraform init
 terraform apply -var-file=terraform.tfvars
 
 Workflow Process

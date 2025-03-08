@@ -6,7 +6,7 @@ This project uses the demo-crm application, which allows users to add customer p
 Before running the workflow, make sure to deploy the infrastructure using Terraform. Use the "Terraform_EKS" folder to set up the environment.
 
 RUN Terraform:
-aws configure
+aws configure (Access key)
 terraform apply -var-file=terraform.tfvars
 
 Workflow Process

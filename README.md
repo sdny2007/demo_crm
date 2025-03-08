@@ -5,6 +5,9 @@ This project uses the demo-crm application, which allows users to add customer p
 ⚠️ Important: Run Terraform Before the Workflow
 Before running the workflow, make sure to deploy the infrastructure using Terraform. Use the "Terraform_EKS" folder to set up the environment.
 
+RUN Terraform:
+terraform apply -var-file=terraform.tfvars
+
 Workflow Process
 Job 1 - CI Process
 Starts by checking the application's health.

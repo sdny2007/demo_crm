@@ -56,3 +56,4 @@ kubectl delete svc service-app
 kubectl delete ingress ingress-app
 kubectl delete svc my-ingress-nginx-controller
 kubectl delete svc service-app
+# Test
